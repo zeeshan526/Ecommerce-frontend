@@ -8,11 +8,11 @@
     border-bottom: 1px solid #d5d4d4;
     padding: 12px 70px;
 }
-.banner-top{
-    /* display: flex;
+/* .banner-top{
+    display: flex;
     justify-content: space-between;
-    align-items: center;  */
-}
+    align-items: center; 
+} */
 .banner-wrap{
     display: flex;
     justify-content: space-between;
@@ -30,9 +30,9 @@
 .currency{
     margin-right: 54px;
 }
-.call-us{
+/* .call-us{
 
-}
+} */
 /* currency:before {
     position: absolute;
     top: 47%;
