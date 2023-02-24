@@ -1,0 +1,45 @@
+/* 
+.banner{
+    border-bottom: 1px solid #d5d4d4;
+    padding: 17px 0px;
+
+} */
+.banner-Container{
+    border-bottom: 1px solid #d5d4d4;
+    padding: 12px 70px;
+}
+.banner-top{
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center;  */
+}
+.banner-wrap{
+    display: flex;
+    justify-content: space-between;
+}
+.banner-wrap1{
+    display: flex;
+    justify-content: space-between;
+}
+.banner-offer{
+    float: right;
+}
+.language{
+    margin-right: 54px;
+}
+.currency{
+    margin-right: 54px;
+}
+.call-us{
+
+}
+/* currency:before {
+    position: absolute;
+    top: 47%;
+    right: -27px;
+    width: 1px;
+    height: 15px;
+    content: "";
+    transform: translateY(-50%);
+    background-color: #d5d4d4;
+} */
