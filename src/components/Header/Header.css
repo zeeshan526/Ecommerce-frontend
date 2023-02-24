@@ -1,0 +1,41 @@
+.head-container{
+    padding: 12px 70px;
+}
+.head-wraper{
+    display: flex;
+    justify-content: space-between;
+}
+.head-list ul {
+    display: flex;
+}
+.head-list ul li{
+    
+    list-style-type: none;
+    
+}
+.head-list ul li a{
+    text-decoration: none;
+    padding: 8px 16px;
+    color: black;
+}
+.head-list ul li a:hover{
+    color: deepskyblue;
+}
+.head-wrapper-child{
+    display: flex;
+}
+.logo{
+    width: 65px;
+}
+.logo img{
+    width: 100%;
+}
+.cart a{
+    list-style-type: none;
+    text-decoration: none;
+    color: black;
+
+}
+.cart a:hover{
+    color: deepskyblue;
+}
