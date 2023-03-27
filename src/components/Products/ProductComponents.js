@@ -25,7 +25,7 @@ export default function ProductComponents() {
                 class="list-items w-full  max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
               >
                 <Link to={`/product/${id}`}>
-                  <img src={image} alt="image" />
+                  <img src={image} alt="loading..." />
                   <div class="px-5 pb-5">
                     <p className="pro-title">{title}</p>
 
@@ -109,7 +109,7 @@ export default function ProductComponents() {
     // <>{renderList}</>
   );
 }
-{
+
   /* <div className='list-items' key={id}>
           <Link style={{color:'black', textDecoration:'none'}} to={`/product/${id}`}>
 
@@ -120,4 +120,4 @@ export default function ProductComponents() {
           </Link>
 
                       </div>  */
-}
+

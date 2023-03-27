@@ -1,6 +1,6 @@
 import React from 'react'
 import '../cart/cart.css'
-import { useDispatch,useSelector } from 'react-redux'
+// import { useDispatch,useSelector } from 'react-redux'
 
 function Cart() {
 

@@ -1,6 +1,6 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect} from 'react'
 import '../Products/Product.css'
-import { useDispatch,useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import ProductComponents from './ProductComponents'
 import { setproducts } from '../../redux/actions/productActions';
 import axios from 'axios'
@@ -28,7 +28,7 @@ useEffect(() => {
   })
   
   
-}, [])
+})
 
 // console.log('products:', products);
 

@@ -1,8 +1,8 @@
 import React from "react";
 import "../Header/Header.css";
 import logo from "../../images/logo.png";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import {  useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Header() {
   const cart = useSelector((state) => state.cart);
@@ -21,36 +21,36 @@ function Header() {
           <div className="head-list">
             <ul className="head-list1">
               <li>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="cat-show">
-                <a href="#">Categories</a>
+                <a href="/">Categories</a>
                 <div className="cat-childs">
                   <ul>
                     <li>
-                      <a href="#">Man</a>
+                      <a href="/">Man</a>
                     </li>
                     <li>
-                      <a href="#">Woman</a>
+                      <a href="/">Woman</a>
                     </li>
                     <li>
-                      <a href="#">Kids</a>
+                      <a href="/">Kids</a>
                     </li>
                   </ul>
                 </div>
               </li>
               <li>
-                <a href="#">Contact</a>
+                <a href="/">Contact</a>
               </li>
               <li>
-                <a href="#">About</a>
+                <a href="/">About</a>
               </li>
             </ul>
           </div>
         </div>
         <Link to="/cart">
           <div className="cart">
-            <a href="#">Cart</a>
+            <a href="/">Cart</a>
             <span> ({cart})</span>
           </div>
         </Link>
