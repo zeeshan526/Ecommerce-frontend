@@ -1,0 +1,19 @@
+.cart-wrapper{
+    margin: 10px 50px;
+}
+.cart-wrapper th{
+    background-color: black;
+    color: white;
+    text-align: left;
+    padding: 15px;
+
+
+
+}
+.cart-wrapper table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.cart-wrapper tr{
+    /* border: 1px solid hsla(0,0%,86.7%,.5); */
+}
