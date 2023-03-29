@@ -1,62 +1,94 @@
-import React from "react";
-import "../Header/Header.css";
-import logo from "../../images/logo.png";
-import {  useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import './../Header/Header.css'
 function Header() {
-  const cart = useSelector((state) => state.cart);
-  console.log(cart);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <div className="head-container">
-      <div className="head-wraper">
-        <div className="head-wrapper-child">
-          <Link to="/">
-            <div className="logo">
-              <img src={logo} alt="logo" />
-            </div>
-          </Link>
+    <>
+    <div className=''>
 
-          <div className="head-list">
-            <ul className="head-list1">
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li className="cat-show">
-                <a href="/">Categories</a>
-                <div className="cat-childs">
-                  <ul>
-                    <li>
-                      <a href="/">Man</a>
-                    </li>
-                    <li>
-                      <a href="/">Woman</a>
-                    </li>
-                    <li>
-                      <a href="/">Kids</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <a href="/">Contact</a>
-              </li>
-              <li>
-                <a href="/">About</a>
-              </li>
-            </ul>
+    </div>
+
+    <header className="bg-white shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex-shrink-0">
+            <Link to="/" className="text-2xl font-bold text-blue-500">
+              Comverse Store
+            </Link>
+          </div>
+          <div className="hidden md:block">
+            <nav className="flex space-x-4">
+              <Link to="/about" className="text-gray-500 hover:text-blue-500">
+                Categories
+              </Link>
+              <Link to="/services" className="text-gray-500 hover:text-blue-500">
+                Services
+              </Link>
+              <Link to="/blog" className="text-gray-500 hover:text-blue-500">
+                About
+              </Link>
+              <Link to="/contact" className="text-gray-500 hover:text-blue-500">
+                Contact Us
+              </Link>
+
+              
+<Link to="/cart">
+    <div className="cart">
+      <a href="/">Cart</a>
+      {/* <span> ({cart})</span> */}
+    </div>
+  </Link>
+            </nav>
+          
+
+
+
+
+          </div>
+          <div className="flex md:hidden">
+            <button type="button" className="p-2" onClick={toggleNav}>
+              <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className="text-gray-500 h-6 w-6" />
+            </button>
           </div>
         </div>
-        <Link to="/cart">
-          <div className="cart">
-            <a href="/">Cart</a>
-            <span> ({cart})</span>
-          </div>
-        </Link>
+        {/* Mobile menu */}
+        
+        <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
+        
+          <nav className="pt-4 pb-2">
+            <Link to="/about" className="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-blue-500">
+              About
+            </Link>
+            <Link to="/services" className="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-blue-500">
+              Services
+            </Link>
+            <Link to="/blog" className="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-blue-500">
+              Blog
+            </Link>
+            <Link to="/contact" className="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-blue-500">
+              Contact
+            </Link>
+          </nav>
+          
+        </div>
+
       </div>
-    </div>
+
+     
+          </header>
+   
+    </>
+
   );
 }
 
 export default Header;
+

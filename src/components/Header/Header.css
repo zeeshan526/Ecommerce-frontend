@@ -35,10 +35,10 @@
 .logo img{
     width: 100%;
 }
-.cart{
+/* .cart{
     padding-top: 25px;
     padding-left: 10px;
-}
+} */
 .cart a{
     list-style-type: none;
     text-decoration: none;
@@ -46,7 +46,7 @@
 
 }
 .cart a:hover{
-    color: deepskyblue;
+    color: #068787;
 }
 .cat-childs{
     box-shadow: 2px;
@@ -70,3 +70,10 @@ height: 4rem !important;
 .logo .w-auto{
     width: 65px;
 } */
+.text-blue-500{
+    color: #068787;
+}
+.text-gray-500:hover{
+    color: #068787;
+
+}

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import ProductComponents from './ProductComponents'
 import { setproducts } from '../../redux/actions/productActions';
 import axios from 'axios'
+import HomePageCrousel from "./../Header/HomePageCrousel";
 
 
 function ProductsListings() {
@@ -19,7 +20,7 @@ const dispatch = useDispatch();
 
 useEffect(() => {
   
-  axios.get('https://fakestoreapi.com/products/?limit=12').then((response)=>{
+  axios.get('https://fakestoreapi.com/products/?limit=15').then((response)=>{
     
 //   console.log(response.data);
     
@@ -50,6 +51,7 @@ useEffect(() => {
   return (
     <div>
     <div >
+    <HomePageCrousel/>
     <ProductComponents/>
     </div>
 

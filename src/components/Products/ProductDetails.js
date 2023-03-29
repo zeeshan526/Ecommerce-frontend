@@ -47,8 +47,6 @@ const addToCart=()=>{
 }
 
 
-
-
   return (
     <div className="datail-container">
       {Object.keys(products).length === 0 ? (

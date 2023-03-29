@@ -26,10 +26,10 @@ export const selectedProducts=(product)=>{
 
 
 
-  export const AddToCart=(product)=>{
+  export const AddToCart=(item)=>{
     debugger
     return {
       type: ActionTypes.Add_TO_CART,
-      payload: product,
+      payload: item,
     }
   }
