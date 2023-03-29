@@ -70,10 +70,10 @@ height: 4rem !important;
 .logo .w-auto{
     width: 65px;
 } */
-.text-blue-500{
+.header .text-blue-500{
     color: #068787;
 }
-.text-gray-500:hover{
+.header .text-gray-500:hover{
     color: #068787;
 
 }
