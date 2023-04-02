@@ -21,6 +21,7 @@ function Header() {
                   Comverse Store
                 </Link>
               </div>
+
               <div className="hidden md:block">
                 <nav className="flex space-x-4">
                   <Link
@@ -48,6 +49,12 @@ function Header() {
                     Contact Us
                   </Link>
 
+                  {/* <Link to="/cart">
+                    <div className="cart">
+                      <a href="/">Cart</a>
+                      <span> ({cart})</span>
+                    </div>
+                  </Link> */}
                   <Link to="/cart">
                     <div className="cart">
                       <a href="/">Cart</a>
@@ -57,6 +64,12 @@ function Header() {
                 </nav>
               </div>
               <div className="flex md:hidden">
+                <Link className="flex items-center" to="/cart">
+                  <div className="cart">
+                    <a href="/">Cart</a>
+                    {/* <span> ({cart})</span> */}
+                  </div>
+                </Link>
                 <button type="button" className="p-2" onClick={toggleNav}>
                   <FontAwesomeIcon
                     icon={isOpen ? faTimes : faBars}
