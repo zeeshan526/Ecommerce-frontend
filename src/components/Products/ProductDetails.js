@@ -5,16 +5,19 @@ import axios from "axios";
 import {
   removeSelectedProducts,
   selectedProducts,
-  AddToCart
+  AddToCart,
 } from "../../redux/actions/productActions";
 
 export default function ProductDetails() {
   const products = useSelector((state) => state.product);
   const { title, price, image } = products;
 
-const data={
-  id: 1, name: 'Product 1', price: 10, quantity: 1
-}
+  const data = {
+    id: 1,
+    name: "Product 1",
+    price: 10,
+    quantity: 1,
+  };
   const { productid } = useParams();
   const dispatch = useDispatch();
   console.log(productid);
@@ -29,23 +32,18 @@ const data={
         dispatch(selectedProducts(response.data));
 
         // console.log(productsData);
-
-        return () => {
-          debugger;
-          dispatch(removeSelectedProducts());
-        };
       });
-  });
+    return () => {
+      debugger;
+      dispatch(removeSelectedProducts());
+    };
+  }, []);
 
-
-
-const addToCart=()=>{
-  console.log('add to cart');
-  debugger
- dispatch(AddToCart(data))
-
-}
-
+  const addToCart = () => {
+    console.log("add to cart");
+    debugger;
+    !!products?.id && dispatch(AddToCart(products));
+  };
 
   return (
     <div className="datail-container">
@@ -69,9 +67,9 @@ const addToCart=()=>{
             </div>
 
             {/* <p className='detail-price'>Price: {price}</p> */}
-            <button className="Add-To-Cart-btn" onClick={()=>addToCart()}>Add To Cart</button>
-
-
+            <button className="Add-To-Cart-btn" onClick={() => addToCart()}>
+              Add To Cart
+            </button>
           </div>
         </div>
       )}
