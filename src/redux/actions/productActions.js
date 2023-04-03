@@ -27,9 +27,15 @@ export const selectedProducts=(product)=>{
 
 
   export const AddToCart=(item)=>{
-    debugger
     return {
       type: ActionTypes.Add_TO_CART,
       payload: item,
     }
   }
+
+  
+  export const removeFromCart = (itemId) => ({
+    type: 'REMOVE_FROM_CART',
+    payload: itemId
+  });
+  

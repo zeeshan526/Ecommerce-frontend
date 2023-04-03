@@ -1,6 +1,7 @@
 import { ActionTypes } from "../constants/actions-types";
 
 const initialState = {
+  itemCount:0,
   cartItems: [],
 };
 
@@ -12,8 +13,16 @@ export const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: [...state.cartItems, action.payload],
-      };
+        itemCount: state.itemCount + 1
 
+        
+
+      };
+       case ActionTypes.REMOVE_FROM_CART:
+         return {
+           ...state,
+           cartItems: state.cartItems.filter(item => item.id !== action.payload)
+        };
     default:
       return state;
   }

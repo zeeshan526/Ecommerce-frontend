@@ -12,12 +12,12 @@ export default function ProductDetails() {
   const products = useSelector((state) => state.product);
   const { title, price, image } = products;
 
-  const data = {
-    id: 1,
-    name: "Product 1",
-    price: 10,
-    quantity: 1,
-  };
+  // const data = {
+  //   id: 1,
+  //   name: "Product 1",
+  //   price: 10,
+  //   quantity: 1,
+  // };
   const { productid } = useParams();
   const dispatch = useDispatch();
   console.log(productid);
@@ -34,7 +34,6 @@ export default function ProductDetails() {
         // console.log(productsData);
       });
     return () => {
-      debugger;
       dispatch(removeSelectedProducts());
     };
   }, []);

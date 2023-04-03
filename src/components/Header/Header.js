@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import {  useSelector } from "react-redux";
+
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./../Header/Header.css";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const cart = useSelector((state) => state.cart.itemCount);
+
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
@@ -49,16 +53,10 @@ function Header() {
                     Contact Us
                   </Link>
 
-                  {/* <Link to="/cart">
-                    <div className="cart">
-                      <a href="/">Cart</a>
-                      <span> ({cart})</span>
-                    </div>
-                  </Link> */}
                   <Link to="/cart">
                     <div className="cart">
                       <a href="/">Cart</a>
-                      {/* <span> ({cart})</span> */}
+                      <span> ({cart})</span>
                     </div>
                   </Link>
                 </nav>
@@ -66,8 +64,8 @@ function Header() {
               <div className="flex md:hidden">
                 <Link className="flex items-center" to="/cart">
                   <div className="cart">
-                    <a href="/">Cart</a>
-                    {/* <span> ({cart})</span> */}
+                    <a href='/cart'>Cart</a>
+                    <span> ({cart})</span>
                   </div>
                 </Link>
                 <button type="button" className="p-2" onClick={toggleNav}>
