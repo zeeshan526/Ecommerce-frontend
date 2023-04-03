@@ -39,3 +39,17 @@ export const selectedProducts=(product)=>{
     payload: itemId
   });
   
+  export const incrementItemCount = (itemId) => {
+    return {
+      type: 'INCREMENT_ITEM_COUNT',
+      payload: itemId
+    };
+  };
+  
+  export const decrementItemCount = (itemId) => {
+    return {
+      type: 'DECREMENT_ITEM_COUNT',
+      payload: itemId
+    };
+  };
+  
