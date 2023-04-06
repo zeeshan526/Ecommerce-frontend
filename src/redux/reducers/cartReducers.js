@@ -3,11 +3,12 @@ import { ActionTypes } from "../constants/actions-types";
 const initialState = {
   itemCount:0,
   cartItems: [],
+  totalPrice:0,
 };
 
 export const cartReducer = (state = initialState, action) => {
   debugger;
-  console.log("state", state);
+  // console.log("state", state);
   switch (action.type) {
     case ActionTypes.Add_TO_CART:
       const existingItemIndex = state.cartItems.findIndex(item => item.id === action.payload.id);
@@ -18,7 +19,8 @@ export const cartReducer = (state = initialState, action) => {
         return {
           ...state,
           cartItems: updatedCart,
-          itemCount: state.itemCount + 1
+          itemCount: state.itemCount + 1,
+          totalPrice: state.totalPrice + action.payload.price
         };
       } else {
         // item does not exist in cart
@@ -26,15 +28,22 @@ export const cartReducer = (state = initialState, action) => {
         return {
           ...state,
           cartItems: [...state.cartItems, newCartItem],
-          itemCount: state.itemCount + 1
+          itemCount: state.itemCount + 1,
+          totalPrice: state.totalPrice + action.payload.price
+
         };
       }
     case ActionTypes.REMOVE_FROM_CART:
       const filteredCart = state.cartItems.filter(item => item.id !== action.payload);
+      const removedItem = state.cartItems.find(item => item.id === action.payload);
+
       return {
         ...state,
         cartItems: filteredCart,
-        itemCount: state.itemCount - 1
+        itemCount: state.itemCount - 1,
+        totalPrice: state.totalPrice - removedItem.price,
+        
+
       };
 
 //increment and decrement quantity

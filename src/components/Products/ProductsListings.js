@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import "../Products/Product.css";
-import { useDispatch } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import ProductComponents from "./ProductComponents";
 import { setproducts } from "../../redux/actions/productActions";
 import axios from "axios";
 import HomePageCrousel from "./../Header/HomePageCrousel";
 
 function ProductsListings() {
-  // const products= useSelector((state)=> state);
+   const products= useSelector((state)=> state);
 
   const dispatch = useDispatch();
 
@@ -18,6 +18,7 @@ function ProductsListings() {
     axios
       .get("https://fakestoreapi.com/products/?limit=15")
       .then((response) => {
+        // let res=response.data
         //   console.log(response.data);
 
         dispatch(setproducts(response.data));
@@ -42,7 +43,12 @@ function ProductsListings() {
     <div>
       <div>
         <HomePageCrousel />
+        {Object.keys(products).length === 0 ? (
+        <div>Loading...</div>
+      ) : (
+
         <ProductComponents />
+      )}
       </div>
     </div>
   );

@@ -6,13 +6,13 @@ import {
   removeSelectedProducts,
   selectedProducts,
   AddToCart,
-  incrementItemCount,
-  decrementItemCount
+  // incrementItemCount,
+  // decrementItemCount
 } from "../../redux/actions/productActions";
 
 export default function ProductDetails() {
   const products = useSelector((state) => state.product);
-  const { id,title, price, image } = products;
+  const { title, price, image } = products;
 
   const { productid } = useParams();
   const dispatch = useDispatch();
@@ -41,13 +41,13 @@ export default function ProductDetails() {
 
 
 
-  const handleIncrement = () => {
-    dispatch(incrementItemCount(id));
-  };
+  // const handleIncrement = () => {
+  //   dispatch(incrementItemCount(id));
+  // };
 
-  const handleDecrement = () => {
-     dispatch(decrementItemCount(id));
-  };
+  // const handleDecrement = () => {
+  //    dispatch(decrementItemCount(id));
+  // };
 
   return (
     <div className="datail-container">
@@ -70,9 +70,9 @@ export default function ProductDetails() {
               <p>{price}</p>
             </div>
             <div>
-            <button onClick={()=>handleIncrement(id)}>increase</button>
+            {/* <button onClick={()=>handleIncrement(id)}>increase</button>
              <spna> </spna>
-             <button onClick={()=>handleDecrement(id)}>decrease</button>
+             <button onClick={()=>handleDecrement(id)}>decrease</button> */}
 </div>
             {/* <p className='detail-price'>Price: {price}</p> */}
             <button className="Add-To-Cart-btn" onClick={() => addToCart()}>

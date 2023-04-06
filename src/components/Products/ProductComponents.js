@@ -20,6 +20,7 @@ export default function ProductComponents() {
             const { id, title, price, image } = productData;
 
             return (
+
               <div
                 key={id}
                 class="list-items w-full  max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
@@ -97,12 +98,7 @@ export default function ProductComponents() {
             );
           })}
 
-          {/* <div className='list-items'>
-          <img src={image} alt='image'/>
-              <p >{title}</p>
-              <p >Price: {price}</p>
-             <button >Buy it now</button>
-          </div> */}
+      
         </div>
       </div>
     </>
