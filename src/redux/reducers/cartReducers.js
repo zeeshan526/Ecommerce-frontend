@@ -20,7 +20,7 @@ export const cartReducer = (state = initialState, action) => {
           ...state,
           cartItems: updatedCart,
           itemCount: state.itemCount + 1,
-          totalPrice: state.totalPrice + action.payload.price
+          totalPrice: state.totalPrice + action.payload.price 
         };
       } else {
         // item does not exist in cart
@@ -29,22 +29,33 @@ export const cartReducer = (state = initialState, action) => {
           ...state,
           cartItems: [...state.cartItems, newCartItem],
           itemCount: state.itemCount + 1,
-          totalPrice: state.totalPrice + action.payload.price
+          totalPrice: state.totalPrice + (action.payload.price * newCartItem.count)
 
         };
       }
-    case ActionTypes.REMOVE_FROM_CART:
-      const filteredCart = state.cartItems.filter(item => item.id !== action.payload);
-      const removedItem = state.cartItems.find(item => item.id === action.payload);
-
-      return {
-        ...state,
-        cartItems: filteredCart,
-        itemCount: state.itemCount - 1,
-        totalPrice: state.totalPrice - removedItem.price,
-        
-
-      };
+      case ActionTypes.REMOVE_FROM_CART:
+        const removedItemId = action.payload;
+        const removedItem = state.cartItems.find(item => item.id === removedItemId);
+        let itemCount = 0;
+        if (removedItem) {
+          itemCount = state.cartItems.reduce((count, item) => {
+            if (item.id === removedItemId) {
+              console.log('count:', count, 'item.quantity:', item.count);
+              return count + item.count;
+            }
+            return count;
+          }, 0);
+        }
+      
+        const filteredCartItems = state.cartItems.filter(item => item.id !== removedItemId);
+      
+        return {
+          ...state,
+          cartItems: filteredCartItems,
+          itemCount: state.itemCount - itemCount,
+          totalPrice: state.totalPrice - (removedItem.price * itemCount),
+        };
+            
 
 //increment and decrement quantity
 

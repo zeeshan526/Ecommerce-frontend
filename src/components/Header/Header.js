@@ -7,7 +7,7 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./../Header/Header.css";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const cart = useSelector((state) => state.cart.itemCount);
+  const cart = useSelector((state) => state.cart);
 
 
   const toggleNav = () => {
@@ -56,7 +56,8 @@ function Header() {
                   <Link to="/cart">
                     <div className="cart">
                       <a href="/">Cart</a>
-                      <span> ({cart})</span>
+                      <span> ({cart.itemCount})</span>
+                      {/* <span> ({cart.totalPrice})</span> */}
                     </div>
                   </Link>
                 </nav>
@@ -65,7 +66,7 @@ function Header() {
                 <Link className="flex items-center" to="/cart">
                   <div className="cart">
                     <a href='/cart'>Cart</a>
-                    <span> ({cart})</span>
+                    <span> ({cart.itemCount})</span>
                   </div>
                 </Link>
                 <button type="button" className="p-2" onClick={toggleNav}>
