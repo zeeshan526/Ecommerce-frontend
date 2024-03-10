@@ -24,7 +24,7 @@ function ProductsListings() {
         dispatch(setproducts(response.data));
         // console.log(productsData);
       });
-  });
+  },[]);
 
   // console.log('products:', products);
 
