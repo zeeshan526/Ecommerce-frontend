@@ -7,7 +7,7 @@ import {
   selectedProducts,
   AddToCart,
   // incrementItemCount,
-  // decrementItemCount
+  // decrementItemCount,
 } from "../../redux/actions/productActions";
 
 export default function ProductDetails() {
@@ -26,27 +26,45 @@ export default function ProductDetails() {
         //   console.log(response.data);
 
         dispatch(selectedProducts(response.data));
-
       });
     return () => {
       dispatch(removeSelectedProducts());
     };
-  }, [productid,dispatch]);
+  }, [productid, dispatch]);
 
   const addToCart = () => {
     console.log("add to cart");
     debugger;
-    !!products?.id && dispatch(AddToCart(products));
+  
+    if (!!products?.id) {
+      // Retrieve the existing cart from local storage
+      const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      // Check if the product already exists in the cart
+      const existingProductIndex = existingCart.findIndex(p => p.id === products.id);
+      if (existingProductIndex >= 0) {
+        // If the product exists, update the quantity or other properties as needed
+        existingCart[existingProductIndex] = {...existingCart[existingProductIndex], count: (existingCart[existingProductIndex].count || 0) + 1};
+      } else {
+        // If the product doesn't exist, add it to the cart
+        existingCart.push({...products, count: 1});
+      }
+  
+      // Save the updated cart to local storage
+      localStorage.setItem('cart', JSON.stringify(existingCart));
+  
+      // Dispatch the action to add to cart
+      dispatch(AddToCart(products));
+    }
   };
+  
 
-
-
-  // const handleIncrement = () => {
+  // const handleIncrement = (id) => {
   //   dispatch(incrementItemCount(id));
   // };
 
-  // const handleDecrement = () => {
-  //    dispatch(decrementItemCount(id));
+  // const handleDecrement = (id) => {
+  //   dispatch(decrementItemCount(id));
   // };
 
   return (
@@ -70,10 +88,14 @@ export default function ProductDetails() {
               <p>{price}</p>
             </div>
             <div>
-            {/* <button onClick={()=>handleIncrement(id)}>increase</button>
-             <spna> </spna>
-             <button onClick={()=>handleDecrement(id)}>decrease</button> */}
-</div>
+              {/* <button onClick={() => handleIncrement(products?.id)}>
+                increase
+              </button>
+              <span> </span>
+              <button onClick={() => handleDecrement(products?.id)}>
+                decrease
+              </button> */}
+            </div>
             {/* <p className='detail-price'>Price: {price}</p> */}
             <button className="Add-To-Cart-btn" onClick={() => addToCart()}>
               Add To Cart

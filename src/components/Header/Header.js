@@ -1,15 +1,20 @@
-import React, { useState } from "react";
-import {  useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import {  useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./../Header/Header.css";
+import { loadCartFromStorage } from "../../redux/actions/productActions";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const cart = useSelector((state) => state.cart);
 
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(loadCartFromStorage());
+  }, [dispatch]);
   const toggleNav = () => {
     setIsOpen(!isOpen);
   };

@@ -53,3 +53,27 @@ export const selectedProducts=(product)=>{
     };
   };
   
+// Example of loadCartFromStorage action
+// export const loadCartFromStorage = () => {
+//   // Attempt to retrieve the cart from local storage
+//   const storedCart = localStorage.getItem('cart');
+//   const cartData = storedCart ? JSON.parse(storedCart) : { itemCount: 0 };
+
+//   return {
+//       type: 'LOAD_CART_FROM_STORAGE',
+//       payload: cartData
+//   };
+// };
+
+export const loadCartFromStorage = () => {
+  let storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+  storedCart = storedCart.map(item => ({
+    ...item,
+    count: Number(item.count) || 0,
+    price: Number(item.price) || 0
+  }));
+  return {
+    type: ActionTypes.LOAD_CART_FROM_STORAGE,
+    payload: storedCart
+  };
+};

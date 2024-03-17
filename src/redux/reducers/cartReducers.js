@@ -59,45 +59,57 @@ export const cartReducer = (state = initialState, action) => {
 
 //increment and decrement quantity
 
-        // case ActionTypes.INCREMENT_ITEM_COUNT:
-        //   const incrementedCart = state.cartItems.map(item => {
-        //     if (item.id === action.payload) {
-        //       return {
-        //         ...item,
-        //         count: item.count + 1
-        //       };
-        //     } else {
-        //       return item;
-        //     }
-        //   });
-        //   return {
-        //     ...state,
-        //     cartItem: incrementedCart,
-        //     itemCount: state.itemCount + 1
-        //   };
-        // case ActionTypes.DECREMENT_ITEM_COUNT:
-        //   const decrementedCart = state.cartItems.map(item => {
-        //     if (item.id === action.payload) {
-        //       return {
-        //         ...item,
-        //         count: item.count - 1
-        //       };
-        //     } else {
-        //       return item;
-        //     }
-        //   });
-        //   return {
-        //     ...state,
-        //     cartItem: decrementedCart,
-        //     itemCount: state.itemCount - 1
-        //   };
+        case ActionTypes.INCREMENT_ITEM_COUNT:
+          const incrementedCart = state.cartItems.map(item => {
+            if (item.id === action.payload) {
+              return {
+                ...item,
+                count: item.count + 1
+              };
+            } else {
+              return item;
+            }
+          });
+          return {
+            ...state,
+            cartItem: incrementedCart,
+            itemCount: state.itemCount + 1
+          };
+        case ActionTypes.DECREMENT_ITEM_COUNT:
+          const decrementedCart = state.cartItems.map(item => {
+            if (item.id === action.payload) {
+              return {
+                ...item,
+                count: item.count - 1
+              };
+            } else {
+              return item;
+            }
+          });
+          return {
+            ...state,
+            cartItem: decrementedCart,
+            itemCount: state.itemCount - 1
+          };
 
 
 
 
+          // case action.LOAD_CART_FROM_STORAGE:
+          //   return {
+          //     ...state,
+          //     ...action.payload // Update the state with cart data from the payload
+          //   };
 
-
-
+          case ActionTypes.LOAD_CART_FROM_STORAGE:
+            return {
+              ...state,
+              cartItems: action.payload,
+              itemCount: action.payload.reduce((total, item) => total + (item.count || 0), 0),
+              totalPrice: action.payload.reduce((total, item) => total + ((item.price || 0) * (item.count || 0)), 0)
+            };
+          
+          
 
 
 
